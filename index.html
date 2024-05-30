@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required />
+        <input type="submit" value="Upload">
+    </form>
+
+    <div id="image-preview"></div>
+
+    <script>
+        // Display image preview without uploading
+        const input = document.querySelector('input[type="file"]');
+        const preview = document.getElementById('image-preview');
+
+        input.addEventListener('change', () => {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Uploaded Image"><br>' +
+                                        'File name: ' + file.name + '<br>' +
+                                        'File type: ' + file.type + '<br>' +
+                                        'File size: ' + file.size + ' bytes<br>';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
