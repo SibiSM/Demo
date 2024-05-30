@@ -4,6 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #image-preview {
+            margin-top: 20px;
+        }
+        #image-preview img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        #image-preview p {
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
     <h1>Upload Image</h1>
@@ -24,16 +75,5 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Uploaded Image"><br>' +
-                                        'File name: ' + file.name + '<br>' +
-                                        'File type: ' + file.type + '<br>' +
-                                        'File size: ' + file.size + ' bytes<br>';
-                };
-                reader.readAsDataURL(file);
-            } else {
-                preview.innerHTML = '';
-            }
-        });
-    </script>
-</body>
-</html>
+                    preview.innerHTML = '<img src="' + e.target.result + '" alt="Uploaded Image">' +
+                              
