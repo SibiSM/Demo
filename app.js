@@ -10,6 +10,7 @@ const { connect } = require('./Database_mongoose.js');
 const authMiddleware = require('./middleware/auth');
 const accountController = require('./controllers/accountController');
 const User = require('./models/user.js');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors());
